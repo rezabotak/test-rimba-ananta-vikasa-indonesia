@@ -21,7 +21,9 @@ class SaleController extends Controller
     {
         $data = Sale::with(['customer', 'saleItems'])->orderBy(request()->order_column, (request()->order_direction == 'true' ? 'DESC' : 'ASC'));
         if (request()->keyword != '') {
-            $data = $data->where('code_transaksi', 'LIKE', '%' . request()->keyword . '%');
+            $data = $data->where('code_transaksi', 'LIKE', '%' . request()->keyword . '%')->orWhereHas('customer', function ($query) {
+                $query->where('nama', 'LIKE', '%' . request()->keyword . '%');
+            });
         }
         return new DataCollection($data->paginate(request()->per_page));
     }
