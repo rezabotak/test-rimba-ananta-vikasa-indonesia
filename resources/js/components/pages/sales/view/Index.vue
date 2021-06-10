@@ -99,7 +99,7 @@ export default {
                     tdClass: "text-center",
                 },
                 { key: "code_transaksi", label: "Code", sortable: true },
-                { key: "customer_id", label: "Customer" },
+                { key: "customer_id", label: "Customer", sortable: true },
                 { key: "tanggal_transaksi", label: "Tanggal Transaksi" },
                 { key: "total_diskon", label: "Total Diskon" },
                 { key: "total_harga", label: "Total Harga" },
